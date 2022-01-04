@@ -1,7 +1,7 @@
 import json
 
 from flask import request
-from flask_restplus import Resource, fields, Namespace
+from flask_restx import Resource, fields, Namespace
 
 from model import User
 from apis import api

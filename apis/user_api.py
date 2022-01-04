@@ -4,7 +4,6 @@ from flask import request
 from flask_restx import Resource, fields, Namespace
 
 from model import User
-from apis import api
 
 ns = Namespace("users",description="Users CURD api.",path="/")
 

@@ -6,6 +6,7 @@ class UserConfigs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     key = db.Column(db.String(64))
     value = db.Column(db.String(64))
+    ceshi = db.Column(db.String(65))
 
     def __str__(self):
         return f"id:{self.id}, key:{self.key}, value {self.value}."

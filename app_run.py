@@ -1,4 +1,6 @@
 from flask import Flask
+from flask_migrate import Migrate
+
 
 def register_api():
     from apis.user_api import ns as user_api
@@ -21,7 +23,7 @@ db.init_app(app)
 # db.drop_all()
 # db.create_all()
 app.register_blueprint(api_blueprint)
-
+migrate = Migrate(app, db)
 
 if __name__ == '__main__':
     app.run(debug=True, port=40000)

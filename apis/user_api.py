@@ -23,6 +23,8 @@ class UserConfig(Resource):
 
     def put(self, user_key):
         # data :{user_key:user_value} eg:{"yuanshuai": 'yuan'}
+        if not request.data:
+            return {"code": 400, "msg": "wrong request arg format"}
         data = json.loads(request.data.decode("utf-8"))
         value = data.get(user_key, None)
         if value is not None:
@@ -37,8 +39,8 @@ class UserConfig(Resource):
             code = 200
             db.session.commit()
         else:
-            code = 404
-            msg = f"request args error"
+            code = 400
+            msg = "request args error"
         return {"code": code, "msg": msg}
 
 # from model import User

@@ -1,0 +1,80 @@
+简介：
+工程目录下包含 python3.8.12 的flask demo，使用sqlite3 进行数据存储。
+环境中包含conda打包的虚拟环境(new.tar.gz)。
+
+环境解压
+step1:
+tar -zxf new.tar.gz -C 指定位置
+step2:
+source 指定位置/bin/activate
+即可进去虚拟环境
+
+创建sqlite3 数据库
+step1:
+在虚拟环境下，cd到自行指定位置，执行指令 sqlite3 数据库名称 例如:  sqlite3 ceshi.db
+step2:
+执行指令： .databases
+step3：
+退出sqlite3，执行指令：.exit
+
+创建测试数据
+在虚拟环境下，进入 test目录，创建表，插入初始数据，执行指令：python add_db_data.py
+
+修改flask 数据库配置
+修改app_run.py中line13 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///创建的sqlite3数据库"
+
+启动server：
+step1：
+在虚拟环境下，bash环境执行指令：export FLASK_APP=app_run.py
+step2：
+命令行执行指令： flask run 即可启动
+默认端口是5000，可使用--port 进行指定 例如： flask run --port 40000
+
+flask 功能描述：
+api1：
+路径： /config/{user_key}
+mothod： GET
+功能：获取user_key对应的value，返回结果
+输出：json类型
+{
+    "code": 200,
+    "msg" : "request succeed. details 88_key:88_value"
+}
+
+api2：
+路径： /config/{user_key}
+mothod： PUT
+功能：校验传递的参数（请求体中user_key与路径中user_key一致），如果user_key不存在，进行添加；如果user_key存在,进行修改
+输入：json类型
+{
+    "user_key" : "new_value"
+}
+输出：json类型
+{
+    "code": 200,
+    "msg" : "add user_key detail successfully."
+}
+
+
+单元测试：
+虚拟环境下，进入test目录
+1.
+执行指令：python -m unittest autotest/test_restful_db.py
+目的：测试restful接口
+path: /config/{user_key}
+method: GET
+test1：测试使用不存在的key
+test2: 测试使用存在的key
+
+path: /config/{user_key}
+method: PUT
+test1: 测试不传递请求体参数
+test2: 测试传递错误请求参数
+test3: 测试修改功能
+test4: 测试添加功能
+
+2.
+执行指令：python -m unittest autotest/test_restful_db_sqlite3
+目的：测试数据库功能
+test1：测试添加信息
+test2：测试修改信息

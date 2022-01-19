@@ -10,7 +10,7 @@ def register_api():
 
 app = Flask("Flask-Web-Demo")
 # config
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///D:/ceshi_sqlite/ceshi.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/yuanshuai/developer/ceshi/ceshi.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -26,4 +26,4 @@ app.register_blueprint(api_blueprint)
 migrate = Migrate(app, db)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=40000)
+    app.run(debug=False, port=40000)

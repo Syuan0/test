@@ -9,7 +9,7 @@ class TestClass(unittest.TestCase):
 
     def setUp(self) -> None:
         app.config['TESTING'] = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///D:/ceshi_sqlite/db_for_test.db"
+        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/yuanshuai/developer/ceshi/ceshi.db"
         db.app = app
         db.create_all()
 

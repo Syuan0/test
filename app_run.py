@@ -10,7 +10,7 @@ def register_api():
 
 app = Flask("Flask-Web-Demo")
 # config
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/yuanshuai/developer/ceshi/ceshi.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///./ceshi.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 

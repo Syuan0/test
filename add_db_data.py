@@ -9,9 +9,10 @@ for num in range(1, 101):
         config.key = "%d_key" % num
         config.value = "%d_value" % num
         configs.append(config)
-        print(config.value)
     except Exception as e:
         print(e)
+length = len(configs)
+print(f'add {length} test data')
 # 手动开启一个app的上下文
 with app.app_context():
     db.drop_all()

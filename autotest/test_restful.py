@@ -1,14 +1,14 @@
 import json
 import os
 import unittest
-from app_run import a
+from app_run import app
 
 
 class TestClass(unittest.TestCase):
     def setUp(self) -> None:
-        self.app = a
-        a.config['TESTING'] = True
-        self.client = a.test_client()
+        self.app = app
+        app.config['TESTING'] = True
+        self.client = app.test_client()
 
     def test_app_exists(self):
         # test get_method
